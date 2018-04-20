@@ -1,8 +1,5 @@
 package sample;
 
-import PannableC.NodeGestures;
-import PannableC.PannableCanvas;
-import PannableC.SceneGestures;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
