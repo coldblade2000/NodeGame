@@ -1,27 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.BorderPane?>
 
-<?import sample.PannableCanvas?>
-<?import javafx.scene.shape.Circle?>
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
-   <children>
-      <SplitPane dividerPositions="0.3543307086614173" prefHeight="577.0" prefWidth="637.0">
+<!--
+<children>
+      <SplitPane  fx:id="splitPane" dividerPositions="0.3543307086614173" maxWidth="Infinity" maxHeight="Infinity" >
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -37,12 +24,34 @@
                </children>
             </AnchorPane>
           <AnchorPane fx:id="canvasAnchor" id="canvasAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-            <PannableCanvas fx:id="PannableCanvas"  AnchorPane.bottomAnchor="0"  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <Circle fx:id="circle" radius="50"/>
-            </PannableCanvas>
 
           </AnchorPane>
         </items>
       </SplitPane>
-   </children>
-</GridPane>
+   </children>-->
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+   <center>
+       <SplitPane  fx:id="splitPane" dividerPositions="0.3543307086614173" maxWidth="Infinity" maxHeight="Infinity" >
+           <items>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                   <children>
+                       <TabPane layoutX="-9.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <tabs>
+                               <Tab text="Utilities">
+                                   <content>
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                   </content>
+                               </Tab>
+                           </tabs>
+                       </TabPane>
+                   </children>
+               </AnchorPane>
+               <AnchorPane fx:id="canvasAnchor" id="canvasAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+
+               </AnchorPane>
+           </items>
+       </SplitPane>
+   </center>
+</BorderPane>

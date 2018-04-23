@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -17,6 +18,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * The canvas which holds all of the nodes of the application.
@@ -41,6 +44,15 @@ class PannableCanvas extends Pane {
             );
             System.out.println( "canvas bounds: " + getBoundsInParent());
         });
+       /* try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CustomComponent.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
+            loader.setClassLoader(getClass().getClassLoader());
+            loader.load();
+        } catch (IOException e ){
+            throw new RuntimeException(e);
+        }*/
 
     }
 
@@ -49,8 +61,8 @@ class PannableCanvas extends Pane {
      */
     public void addGrid() {
 
-        double w = getBoundsInLocal().getWidth();
-        double h = getBoundsInLocal().getHeight();
+        double w = getBoundsInLocal().getWidth()*8;
+        double h = getBoundsInLocal().getHeight()*8;
 
         // add grid
         Canvas grid = new Canvas(w, h);
@@ -71,6 +83,9 @@ class PannableCanvas extends Pane {
             // horizontal
             gc.strokeLine( 0, i, w, i);
         }
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(4);
+        gc.strokeLine(-(getBoundsInLocal().getWidth()*4), -(getBoundsInLocal().getWidth()*4), (getBoundsInLocal().getWidth()*4), (getBoundsInLocal().getWidth()*4));
 
         getChildren().add( grid);
 
@@ -83,8 +98,7 @@ class PannableCanvas extends Pane {
 
     /**
      * Set x/y scale
-     * @param myScale
-     */
+     * @param    */
     public void setScale( double scale) {
         myScale.set(scale);
     }
@@ -265,6 +279,10 @@ class SceneGestures {
 
             // note: pivot value must be untransformed, i. e. without scaling
             canvas.setPivot(f*dx, f*dy);
+            //  Circle circle1 = new Circle( 300, 300, 50);
+            //        circle1.setStroke(Color.ORANGE);
+            //        circle1.setFill(Color.ORANGE.deriveColor(1, 1, 1, 0.5));
+            canvas.getChildren().add(new Circle(f*dx, f*dy, 5, Color.RED));
 
             event.consume();
 
